@@ -225,7 +225,7 @@ public class RecAreaTest extends RIDBTestCase {
     public void testRecAreaGetAllActivities()
     {
         
-        RIDBActivity[] result = client.RecArea.getAllActivities(440);
+        RIDBRecAreaActivity[] result = client.RecArea.getAllActivities(440);
 
         assertTrue(result.length > 0);
     }
@@ -236,7 +236,7 @@ public class RecAreaTest extends RIDBTestCase {
         
     	RIDBSearchParameters params = new RIDBSearchParameters();
         params.setQuery("fishing");
-        RIDBList<RIDBActivity> result = client.RecArea.searchActivities(440, params);
+        RIDBList<RIDBRecAreaActivity> result = client.RecArea.searchActivities(440, params);
 
         assertTrue(result.dataLength() > 0);
     }
@@ -245,7 +245,7 @@ public class RecAreaTest extends RIDBTestCase {
     public void testRecAreaGetActivity()
     {
         
-        RIDBActivity result = client.RecArea.getActivity(440, 11);
+        RIDBRecAreaActivity result = client.RecArea.getActivity(440, 11);
 
         assertEquals(result.getActivityID(), 11);
     }

@@ -179,30 +179,30 @@ public class RIDBClientModRecArea extends RIDBClientModule {
         return singleElementArray[0];
     }
 	
-	public RIDBActivity[] getAllActivities(int recAreaId)
+	public RIDBRecAreaActivity[] getAllActivities(int recAreaId)
     {
 		final int finalId = recAreaId;
-		RIDBPager<RIDBActivity> pager = new RIDBPager<RIDBActivity>()
+		RIDBPager<RIDBRecAreaActivity> pager = new RIDBPager<RIDBRecAreaActivity>()
 				{
-					public RIDBList<RIDBActivity> getPage(RIDBSearchParameters searchParams) {
+					public RIDBList<RIDBRecAreaActivity> getPage(RIDBSearchParameters searchParams) {
 						return searchActivities(finalId, searchParams);
 					}
 			
 				};
-		return client.<RIDBActivity>getAll(null, pager, RIDBActivity.class);
+		return client.<RIDBRecAreaActivity>getAll(null, pager, RIDBRecAreaActivity.class);
     }
 	
-	public RIDBList<RIDBActivity> searchActivities(int recAreaId, RIDBSearchParameters searchParams)
+	public RIDBList<RIDBRecAreaActivity> searchActivities(int recAreaId, RIDBSearchParameters searchParams)
     {
 		String url = client.formatSearchUrl("/recareas/%s/activities", new String[] { Integer.toString(recAreaId) }, searchParams);
-        return (RIDBList<RIDBActivity>) client.<RIDBActivityList>makeRequest(url, RIDBActivityList.class);
+        return (RIDBList<RIDBRecAreaActivity>) client.<RIDBRecAreaActivityList>makeRequest(url, RIDBRecAreaActivityList.class);
     }
 	
-	public RIDBActivity getActivity(int recAreaId, int activityId)
+	public RIDBRecAreaActivity getActivity(int recAreaId, int activityId)
     {
 		String url = client.formatUrl("/recareas/%s/activities/%s", new String[] { Integer.toString(recAreaId), Integer.toString(activityId) }, null);
         //return client.<RIDBRecArea>makeRequest(url, RIDBRecArea.class);
-        RIDBActivity[] singleElementArray = client.<RIDBActivity[]>makeRequest(url, RIDBActivity[].class);
+        RIDBRecAreaActivity[] singleElementArray = client.<RIDBRecAreaActivity[]>makeRequest(url, RIDBRecAreaActivity[].class);
         if (singleElementArray == null || singleElementArray.length == 0) return null;
         return singleElementArray[0];
     }
@@ -240,9 +240,9 @@ public class RIDBClientModRecArea extends RIDBClientModule {
 		public RIDBEventList() { super(); }
 	}
 	
-	public static class RIDBActivityList extends RIDBList<RIDBActivity>
+	public static class RIDBRecAreaActivityList extends RIDBList<RIDBRecAreaActivity>
 	{
-		public RIDBActivityList() { super(); }
+		public RIDBRecAreaActivityList() { super(); }
 	}
 
 }
